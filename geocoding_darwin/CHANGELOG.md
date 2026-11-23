@@ -1,3 +1,15 @@
+## 1.0.3+veniti.1
+
+- **VENITI PATCH** (fork `allansalles-satellitus/flutter-geocoding`, tag
+  `geocoding_darwin_v1.0.3+veniti.1`, usado via `dependency_overrides` git no
+  app): `detachFromEngine` mantém o
+  `ProxyApiRegistrar` vivo por 120s depois do `tearDown()`. No 1.0.3 publicado
+  ele era destruído na hora, e uma resposta do `CLGeocoder` ainda pendente lia
+  a referência `unowned` destruída e abortava o app (Crashlytics `86faf374`,
+  `Attempted to read an unowned reference`). Remover esta cópia quando uma
+  versão oficial corrigir o defeito. Spec:
+  `20261105-1408-ios-geocoding-unowned-crash`.
+
 ## 1.0.3
 
 - Moves `pigeon` from `dependencies` to `dev_dependencies`. Pigeon is a
